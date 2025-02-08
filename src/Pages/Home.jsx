@@ -12,7 +12,7 @@ const Home = () => {
     const getAdminData = async () => {
         const response = await axios.get('http://localhost:5000/admin-api', { withCredentials: true })
         setAdminData(response?.data?.data)
-        console.log(response);
+        // console.log(response);
     }
 
     // console.log('hello',document.cookie)
