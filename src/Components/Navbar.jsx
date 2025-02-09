@@ -1,11 +1,13 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 
 const Navbar = () => {
     const { user, userSignOut } = useAuth();
+    const nagivate = useNavigate();
     const handleLogout = () => {
         userSignOut()
             .then(res => {
+                nagivate('/login')
                 alert('Logout Successfully.')
             })
             .catch(error => {

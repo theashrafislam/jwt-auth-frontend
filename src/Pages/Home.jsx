@@ -3,14 +3,17 @@ import React, { useContext, useEffect, useState } from 'react';
 // import useAuth from '../Hooks/useAuth';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 import toast from 'react-hot-toast';
+import useAxiosSecure from '../Hooks/useAxiosSecure';
 
 const Home = () => {
     const [data, setData] = useState([]);
     const { user, loading } = useContext(AuthContext);
+    const axiosSecure = useAxiosSecure();
 
     const [adminData, setAdminData] = useState({});
     const getAdminData = async () => {
-        const response = await axios.get(`http://localhost:5000/admin-api?email=${user?.email}`, { withCredentials: true })
+        // const response = await axios.get(`http://localhost:5000/admin-api?email=${user?.email}`, { withCredentials: true })
+        const response = await axiosSecure.get(`/admin-api?email=${user?.email}`)
         setAdminData(response?.data?.data)
         // console.log(response);
     }
