@@ -10,7 +10,7 @@ const Home = () => {
 
     const [adminData, setAdminData] = useState({});
     const getAdminData = async () => {
-        const response = await axios.get('http://localhost:5000/admin-api', { withCredentials: true })
+        const response = await axios.get(`http://localhost:5000/admin-api?email=${user?.email}`, { withCredentials: true })
         setAdminData(response?.data?.data)
         // console.log(response);
     }
